@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+   <head>
+      <meta name="description" content="">
+      <meta name="author" content="">
+      <link rel="icon" href="">
+      <meta charset="utf-8">
+      <meta http-equiv="X-UA-Compatible" content="IE=edge">
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+      <!-- title -->
+      <title>Barcelona's commerce</title>
+      <!-- JS -->
+      <script src="dist/js/leaflet.js"></script>
+      <script src="dist/js/jquery.min.js"></script>
+      <!-- CSS -->
+      <link href="dist/css/leaflet.css" rel="stylesheet">
+      <link href="dist/css/base.css" rel="stylesheet">
+      <link href="dist/css/map.css" rel="stylesheet">
+      <!-- Fonts -->
+      <link href="https://fonts.googleapis.com/css2?family=Karla&family=Pacifico&display=swap" rel="stylesheet">
+      <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono&display=swap" rel="stylesheet">
+   </head>
+   <body>
+      <div class="container" onclick="menuicon(this)" id="toggle">
+         <div class="bar1"></div>
+         <div class="bar2"></div>
+         <div class="bar3"></div>
+      </div>
+      <div id="map"></div>
+      <div id = 'in'>+</div>
+      <div id = 'out'>-</div>
+      <div id="Absinfobox">
+         <h5><span id="counthot"></span><br><span id="countcold"></span><br><span id="countresi"></span></h5>
+      </div>
+      <div id="Absinfobox">
+         <h5><span id="outlineinfo"></span></h5>
+      </div>
+      <div id="sidebar-wrapper">
+         <div class="infotop">
+            <h1>The future of <br>commerce in <br>Barcelona</h1>
+            <h2>A hypothetical map <br>of its spatial distribution</h2>
+            <p>Categorization criteria:</p>
+            </br>
+            <p><span class="dot" style="background-color: #fbbe13"></span>Cluster of business in risk</p>
+            <h3><span class="dot"style="opacity: 0%"></span>When (z-score > 1.65 / p-value < 0.1)</h3>
+            <p><span class="dot" style="background-color: #2ef4b9"></span>Cluster of resilient business</p>
+            <h3><span class="dot"style="opacity: 0%"></span>When (z-score < -1.65 / p-value < 0.1)</h3>
+            <p><span class="dot" style="background-color: #8a96b2"></span>Neutral</p>
+            <h3><span class="dot"style="opacity: 0%"></span>When (1.65 > z-score > - 1.65 / p-value > 0.1)</h3>
+         </div>
+         <div class="infobot">
+            <div class="legend"></div>
+            <h3>Studied using High/Low Clustering (Getis-Ord General Gi*).</h3>
+            <h3>Data source: Economic activities census on the ground floor of the city of Barcelona. 2019</h3>
+         </div>
+      </div>
+      <script>
+         $("#toggle").click(function(e) {
+             e.preventDefault();
+             $("#sidebar-wrapper").toggleClass("toggled");
+         });
+         
+         function menuicon(x) {
+             var mq = window.matchMedia("(min-width: 768px)");
+             if (mq.matches) {
+                 x.classList.toggle("back");
+             } else {
+                 x.classList.toggle("change");
+             }
+         }
+      </script>
+   </body>
+   <footer>
+      <!-- Les capes de JSON -->
+      <script src="dist/layer/grid.js"></script>
+      <script src="dist/layer/outline.js"></script>
+      <script src="dist/js/map.js"></script>
+   </footer>
+</html>
